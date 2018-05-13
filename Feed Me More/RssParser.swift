@@ -108,8 +108,6 @@ class StandardRssParser: NSObject, RssParser, XMLParserDelegate {
                 state.curItem.title += string
             case .pubDate:
                 state.curItem.pubDate += string
-            case .description:
-                print(string)
             default:
                 // skip unrelated text
                 return

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <language>ru</language>
+    <title>Lenta.ru : Новости</title>
+    <description>Новости, статьи, фотографии, видео. Семь дней в неделю, 24 часа в сутки</description>
+    <link>https://lenta.ru</link>
+    <image>
+      <url>https://assets.lenta.ru/small_logo.png</url>
+      <title>Lenta.ru</title>
+      <link>https://lenta.ru</link>
+      <width>134</width>
+      <height>22</height>
+    </image>
+    <atom:link rel="self" type="application/rss+xml" href="http://lenta.ru/rss/news"/>
+<item>
+  <guid>https://lenta.ru/news/2018/05/13/rus_euro/</guid>
+  <title>Российские тхэквондисты стали первыми в Европе</title>
+  <link>https://lenta.ru/news/2018/05/13/rus_euro/</link>
+  <description>
+    <![CDATA[Сборная России по тхэквондо заняла первое место в медальном зачете на первенстве Европы, который завершился в Казани. Всего в активе национальной команды 15 медалей, четыре из них — золотые. Также россияне выиграли пять серебряных медалей и шесть бронзовых. Чемпионат Европы прошел с 10 по 13 мая.]]>
+  </description>
+  <pubDate>Sun, 13 May 2018 23:20:21 +0300</pubDate>
+  <enclosure url="https://icdn.lenta.ru/images/2018/05/13/20/20180513201012496/pic_5431ff8e245c1d0008fda9a33097f68d.jpg" length="84734" type="image/jpeg"/>
+  <category>Спорт</category>
+</item>
+<item>
+  <guid>https://lenta.ru/news/2018/05/13/tsuladze/</guid>
+  <title>Умер Баадур Цуладзе</title>
+  <link>https://lenta.ru/news/2018/05/13/tsuladze/</link>
+  <description>
+    <![CDATA[Грузинский актер и режиссер Баадур Цуладзе умер в возрасте 83 лет. Заслуженный артист Грузии ушел из жизни в Тбилиси после продолжительной болезни. Он исполнил более 90 ролей в кино, широкую известность ему принесла роль трактирщика в «Приключениях Буратино». Также он срежиссировал десять собственных картин.<br />]]>
+  </description>
+  <pubDate>Sun, 13 May 2018 23:06:39 +0300</pubDate>
+  <enclosure url="https://icdn.lenta.ru/images/2018/05/13/23/20180513230627879/pic_ce9d1ed03d177842742fb51af50b3b24.jpeg" length="26200" type="image/jpeg"/>
+  <category>Культура</category>
+</item>
+<item>
+  <guid>https://lenta.ru/news/2018/05/13/zhaloba/</guid>
+  <title>Telegram обжаловал решение суда о блокировке</title>
+  <link>https://lenta.ru/news/2018/05/13/zhaloba/</link>
+  <description>
+    <![CDATA[Юристы Telegram подали апелляционную жалобу на решение суда о блокировке мессенджера. По мнению адвокатов, Роскомнадзор вышел за рамки своих полномочий, обратившись в суд, а суд нарушил процессуальный порядок, не возбудив гражданское дело, а рассмотрев иск в особом порядке.]]>
+  </description>
+  <pubDate>Sun, 13 May 2018 22:34:00 +0300</pubDate>
+  <enclosure url="https://icdn.lenta.ru/images/2018/05/13/22/20180513223437869/pic_7eaeb15c1aaaf05f671c1528ce73fd4b.jpg" length="74530" type="image/jpeg"/>
+  <category>Интернет и СМИ</category>
+</item>
+</channel>
+</rss>
