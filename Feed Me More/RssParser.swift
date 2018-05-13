@@ -66,14 +66,6 @@ class StandardRssParser: NSObject, RssParser, XMLParserDelegate {
                 qualifiedName qName: String?,
                 attributes attributeDict: [String : String] = [:]) {
         
-        #if DEBUG
-        // FIXME: DEBUG stuff
-        if state.items.count > 10 {
-            parser.abortParsing()
-            return
-        }
-        #endif
-        
         switch elementName {
         case ItemNames.item:
             state.inItem = true

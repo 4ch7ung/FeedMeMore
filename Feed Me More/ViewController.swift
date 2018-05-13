@@ -9,20 +9,41 @@
 import UIKit
 
 class ViewController: UITableViewController {
+    // TODO: Move stuff to model
     var items: [Item] = []
-    var parser: RssParser = StandardRssParser()
+    private var api: FeedAPI = LentaRuFeedAPIFactory().createAPI()
     
     override func viewDidLoad() {
-        // TODO: move to networking
-        let feedUrl = URL(string: "https://lenta.ru/rss/news")!
-        let rss = try! Data(contentsOf: feedUrl)
-        self.items = parser.parse(data: rss)
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 80
         tableView.register(NewsCell.self, forCellReuseIdentifier: "NewsCell")
     }
     
+    @objc func refresh() {
+        // TODO: move to networking
+        self.navigationItem.title = "Getting data..."
+        api.requestFeed(success: { feed in
+            self.navigationItem.title = "Lenta.ru feed"
+            self.gotResults(feed.items)
+        }, failure: { error in
+            self.navigationItem.title = "Failed to get feed data"
+            self.didFailToUpdateResults()
+            NSLog("\(error.localizedDescription)")
+        })
+    }
+    
+    func didFailToUpdateResults() {
+    }
+    
+    func gotResults(_ items: [Item]) {
+        self.items = items
+        tableView.reloadData()
+    }
+}
+
+// MARK: - UITableViewDataSource
+extension ViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
@@ -35,7 +56,10 @@ class ViewController: UITableViewController {
         
         return cell
     }
-    
+}
+
+// MARK: - UITableViewDelegate
+extension ViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         UIView.animate(withDuration: 0.25) {
             tableView.beginUpdates()
@@ -43,4 +67,3 @@ class ViewController: UITableViewController {
         }
     }
 }
-
