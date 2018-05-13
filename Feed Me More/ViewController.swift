@@ -14,6 +14,9 @@ class ViewController: UITableViewController {
     private var api: FeedAPI = LentaRuFeedAPIFactory().createAPI()
     
     override func viewDidLoad() {
+        refresh()
+        self.refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 80
@@ -34,11 +37,13 @@ class ViewController: UITableViewController {
     }
     
     func didFailToUpdateResults() {
+        refreshControl?.endRefreshing()
     }
     
     func gotResults(_ items: [Item]) {
         self.items = items
         tableView.reloadData()
+        refreshControl?.endRefreshing()
     }
 }
 
