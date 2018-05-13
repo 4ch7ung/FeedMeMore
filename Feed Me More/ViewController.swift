@@ -8,18 +8,39 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UITableViewController {
+    var items: [Item] = []
+    var parser: RssParser = StandardRssParser()
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // TODO: move to networking
+        let feedUrl = URL(string: "https://lenta.ru/rss/news")!
+        let rss = try! Data(contentsOf: feedUrl)
+        self.items = parser.parse(data: rss)
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 80
+        tableView.register(NewsCell.self, forCellReuseIdentifier: "NewsCell")
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
     }
-
-
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsCell
+        
+        let item = items[indexPath.row]
+        cell.configure(item)
+        
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.25) {
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }
+    }
 }
 
