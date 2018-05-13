@@ -1,5 +1,5 @@
 //
-//  NewsCellTableViewCell.swift
+//  NewsCell.swift
 //  Feed Me More
 //
 //  Created by macbook on 12.05.2018.
@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 
 class NewsCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!

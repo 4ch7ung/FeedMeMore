@@ -8,6 +8,10 @@
 
 import UIKit
 
+fileprivate struct Identifiers {
+    static let newsCell = "NewsCell"
+}
+
 class ViewController: UITableViewController {
     // TODO: Move stuff to model
     var items: [Item] = []
@@ -20,7 +24,7 @@ class ViewController: UITableViewController {
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 80
-        tableView.register(NewsCell.self, forCellReuseIdentifier: "NewsCell")
+        tableView.register(NewsCell.self, forCellReuseIdentifier: Identifiers.newsCell)
     }
     
     @objc func refresh() {
@@ -54,7 +58,7 @@ extension ViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.newsCell, for: indexPath) as! NewsCell
         
         let item = items[indexPath.row]
         cell.configure(item)

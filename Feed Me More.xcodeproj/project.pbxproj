@@ -19,7 +19,7 @@
 		FA9B367220A7437700D7C053 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA9B367020A7437700D7C053 /* LaunchScreen.storyboard */; };
 		FA9B367D20A7437700D7C053 /* StandardRssParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9B367C20A7437700D7C053 /* StandardRssParserTests.swift */; };
 		FA9B368820A7445100D7C053 /* RssParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9B368720A7445100D7C053 /* RssParser.swift */; };
-		FA9B368A20A7448B00D7C053 /* NewsCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9B368920A7448B00D7C053 /* NewsCellTableViewCell.swift */; };
+		FA9B368A20A7448B00D7C053 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9B368920A7448B00D7C053 /* NewsCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +51,7 @@
 		FA9B367C20A7437700D7C053 /* StandardRssParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardRssParserTests.swift; sourceTree = "<group>"; };
 		FA9B367E20A7437700D7C053 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA9B368720A7445100D7C053 /* RssParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RssParser.swift; sourceTree = "<group>"; };
-		FA9B368920A7448B00D7C053 /* NewsCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCellTableViewCell.swift; sourceTree = "<group>"; };
+		FA9B368920A7448B00D7C053 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,7 +135,7 @@
 				FA9B366920A7437400D7C053 /* ViewController.swift */,
 				FA103DED20A8F18400C71EA0 /* FeedAPI */,
 				FA9B368720A7445100D7C053 /* RssParser.swift */,
-				FA9B368920A7448B00D7C053 /* NewsCellTableViewCell.swift */,
+				FA9B368920A7448B00D7C053 /* NewsCell.swift */,
 				FA9B366B20A7437400D7C053 /* Main.storyboard */,
 				FA9B366E20A7437700D7C053 /* Assets.xcassets */,
 				FA9B367020A7437700D7C053 /* LaunchScreen.storyboard */,
@@ -300,7 +300,7 @@
 				FA103DEC20A8F11C00C71EA0 /* FeedAPI.swift in Sources */,
 				FA9B366A20A7437400D7C053 /* ViewController.swift in Sources */,
 				FA9B366820A7437400D7C053 /* AppDelegate.swift in Sources */,
-				FA9B368A20A7448B00D7C053 /* NewsCellTableViewCell.swift in Sources */,
+				FA9B368A20A7448B00D7C053 /* NewsCell.swift in Sources */,
 				FA9B368820A7445100D7C053 /* RssParser.swift in Sources */,
 				FA103DF120A8F8F000C71EA0 /* FeedAPIFactory.swift in Sources */,
 				FA103DEA20A8F0B200C71EA0 /* LentaRuFeedAPI.swift in Sources */,
