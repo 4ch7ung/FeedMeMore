@@ -20,9 +20,11 @@ protocol FeedVM {
 
 class FeedViewController: UITableViewController {
     private let viewModel: FeedVM
+    private var selectedIndexPath: IndexPath?
     
     init(viewModel: FeedVM) {
         self.viewModel = viewModel
+        self.selectedIndexPath = nil
         super.init(style: .plain)
     }
     
@@ -35,14 +37,21 @@ class FeedViewController: UITableViewController {
         self.refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 80
+        tableView.estimatedRowHeight = 90
         tableView.register(NewsCell.self, forCellReuseIdentifier: Identifiers.newsCell)
     }
     
     @objc func refresh() {
         self.navigationItem.title = "Getting data..."
         viewModel.updateFeed()
+    }
+    
+    func updateTableLayout() {
+        UIView.animate(withDuration: 0.25) {
+            self.tableView.beginUpdates()
+            self.tableView.setNeedsLayout()
+            self.tableView.endUpdates()
+        }
     }
 }
 
@@ -77,10 +86,27 @@ extension FeedViewController {
 
 // MARK: - UITableViewDelegate
 extension FeedViewController {
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        UIView.animate(withDuration: 0.25) {
-            tableView.beginUpdates()
-            tableView.endUpdates()
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if selectedIndexPath == indexPath {
+            tableView.deselectRow(at: indexPath, animated: true)
+            self.updateTableLayout()
+            selectedIndexPath = nil
+            return nil
         }
+        
+        selectedIndexPath = indexPath
+        return indexPath
+    }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let c = cell as? NewsCell else {
+            Logger.debug("Cell is not typeof NewsCell")
+            return
+        }
+        c.stopDownloadTasks()
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.updateTableLayout()
     }
 }

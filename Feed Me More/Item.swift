@@ -8,9 +8,11 @@
 
 import Foundation
 
+/// News item representing single new
 struct Item {
     var feedName: String = ""
     var title: String = ""
     var description: String = ""
+    var imageUrl: String? = nil
     var pubDate: Date = Date()
 }

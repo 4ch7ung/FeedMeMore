@@ -17,6 +17,7 @@ class StandardRssParser: NSObject, RssParser, XMLParserDelegate {
         case title
         case description
         case pubDate
+        case enclosure
         case none
     }
     
@@ -34,7 +35,13 @@ class StandardRssParser: NSObject, RssParser, XMLParserDelegate {
         static let title = "title"
         static let description = "description"
         static let pubDate = "pubDate"
+        static let enclosure = "enclosure"
     }
+    
+    private let supportedImageTypes: [String] = [
+        "image/jpeg",
+        "image/png"
+    ]
     
     private var internalParser: XMLParser?
     private var state: State
@@ -67,9 +74,21 @@ class StandardRssParser: NSObject, RssParser, XMLParserDelegate {
         case ItemNames.item:
             state.inItem = true
             state.curItem = Item()
-        case ItemNames.title, ItemNames.description, ItemNames.pubDate:
-            if state.inItem {
-                state.element = Elem(rawValue: elementName)!
+
+        case ItemNames.title,
+             ItemNames.description,
+             ItemNames.pubDate:
+            guard state.inItem else { return }
+            state.element = Elem(rawValue: elementName)!
+
+        case ItemNames.enclosure:
+            guard state.inItem else { return }
+            state.element = .enclosure
+            if let url = attributeDict["url"],
+                let type = attributeDict["type"],
+                supportedImageTypes.contains(type) {
+                
+                state.curItem.imageUrl = url
             }
         default:
             // skip unknown tags
@@ -83,11 +102,14 @@ class StandardRssParser: NSObject, RssParser, XMLParserDelegate {
             state.inItem = false
             state.curItem.feedName = state.name
             state.items.append(state.curItem)
+            
         case ItemNames.description:
             state.curItem.description = state.curItem.description.trimmingCharacters(in: .whitespacesAndNewlines)
             state.element = .none
-        case ItemNames.title, ItemNames.pubDate:
+            
+        case ItemNames.title, ItemNames.pubDate, ItemNames.enclosure:
             state.element = .none
+            
         default:
             // skip unknown tags
             return
@@ -99,14 +121,22 @@ class StandardRssParser: NSObject, RssParser, XMLParserDelegate {
             switch state.element {
             case .title:
                 state.curItem.title += string
+                
             case .pubDate:
                 state.curItem.pubDate = dateFormatter.date(from: string) ?? Date.distantPast
+                
             case .description:
                 state.curItem.description += string
+                
             default:
                 // skip unrelated text
                 return
             }
         }
+    }
+    
+    func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
+        parser.abortParsing()
+        NSLog("\(parseError.localizedDescription)")
     }
 }

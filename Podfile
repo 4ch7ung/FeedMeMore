@@ -5,4 +5,5 @@ target 'Feed Me More' do
   use_frameworks!
 
   pod 'Alamofire', '~> 4.7'
+  pod 'Kingfisher', '~> 4.0'
 end
