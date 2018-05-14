@@ -13,6 +13,8 @@ struct FeedResult {
 }
 
 protocol FeedAPI {
+    var name: String { get }
+    
     func requestFeed(success: @escaping (FeedResult) -> Void, failure: @escaping (Error) -> Void)
 }
 

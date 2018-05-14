@@ -86,7 +86,10 @@ class StandardRssParser: NSObject, RssParser, XMLParserDelegate {
         case ItemNames.item:
             state.inItem = false
             state.items.append(state.curItem)
-        case ItemNames.title, ItemNames.description, ItemNames.pubDate:
+        case ItemNames.description:
+            state.curItem.description = state.curItem.description.trimmingCharacters(in: .whitespacesAndNewlines)
+            state.element = .none
+        case ItemNames.title, ItemNames.pubDate:
             state.element = .none
         default:
             // skip unknown tags
@@ -101,18 +104,11 @@ class StandardRssParser: NSObject, RssParser, XMLParserDelegate {
                 state.curItem.title += string
             case .pubDate:
                 state.curItem.pubDate = dateFormatter.date(from: string) ?? Date.distantPast
+            case .description:
+                state.curItem.description += string
             default:
                 // skip unrelated text
                 return
-            }
-        }
-    }
-    
-    func parser(_ parser: XMLParser, foundCDATA CDATABlock: Data) {
-        if state.inItem {
-            // CDATA is standard way to store description in feeds
-            if state.element == .description {
-                state.curItem.description = String(data: CDATABlock, encoding: .utf8) ?? ""
             }
         }
     }

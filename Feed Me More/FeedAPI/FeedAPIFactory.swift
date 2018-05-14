@@ -15,6 +15,13 @@ protocol FeedAPIFactory {
 class LentaRuFeedAPIFactory: FeedAPIFactory {
     func createAPI() -> FeedAPI {
         let parser = StandardRssParser()
-        return LentaRuFeedAPI(parser: parser)
+        return StandardFeedAPI(name: "Lenta.ru", feedUrl: "https://lenta.ru/rss/news", parser: parser)
+    }
+}
+
+class GazetaRuFeedAPIFactory: FeedAPIFactory {
+    func createAPI() -> FeedAPI {
+        let parser = StandardRssParser()
+        return StandardFeedAPI(name: "Gazeta.ru", feedUrl: "https://www.gazeta.ru/export/rss/lenta.xml", parser: parser)
     }
 }

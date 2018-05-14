@@ -53,7 +53,7 @@ extension FeedViewController: FeedVMDelegate {
     }
     
     func gotResults() {
-        self.navigationItem.title = "Lenta.ru feed"
+        self.navigationItem.title = "News feed"
         tableView.reloadData()
         refreshControl?.endRefreshing()
     }
