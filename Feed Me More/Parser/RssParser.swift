@@ -109,4 +109,9 @@ class StandardRssParser: NSObject, RssParser, XMLParserDelegate {
             }
         }
     }
+    
+    func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
+        parser.abortParsing()
+        Logger.error(parseError.localizedDescription)
+    }
 }
