@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol FeedVMDelegate {
+protocol FeedVMDelegate: class {
     func gotResults()
     func didFailToUpdateResults()
 }
@@ -16,7 +16,7 @@ protocol FeedVMDelegate {
 class FeedViewModel: FeedVM {
     private let apis: [FeedAPI]
     
-    var delegate: FeedVMDelegate?
+    weak var delegate: FeedVMDelegate?
     var items: [Item]
     
     init(apis: [FeedAPI]) {
