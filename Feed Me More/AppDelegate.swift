@@ -15,8 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let vc = ViewController()
-        window = UIWindow(frame: UIScreen.main.bounds)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let assembly: ModuleAssembly = FeedAssembly()
+        let vc = assembly.assembleModule()
         let navController = UINavigationController(rootViewController: vc)
         navController.isNavigationBarHidden = false
         window?.rootViewController = navController

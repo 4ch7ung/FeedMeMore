@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FeedViewController.swift
 //  Feed Me More
 //
 //  Created by macbook on 12.05.2018.
@@ -12,10 +12,23 @@ fileprivate struct Identifiers {
     static let newsCell = "NewsCell"
 }
 
-class ViewController: UITableViewController {
-    // TODO: Move stuff to model
-    var items: [Item] = []
-    private var api: FeedAPI = LentaRuFeedAPIFactory().createAPI()
+protocol FeedVM {
+    var items: [Item] { get }
+    
+    func updateFeed()
+}
+
+class FeedViewController: UITableViewController {
+    private let viewModel: FeedVM
+    
+    init(viewModel: FeedVM) {
+        self.viewModel = viewModel
+        super.init(style: .plain)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         refresh()
@@ -28,39 +41,34 @@ class ViewController: UITableViewController {
     }
     
     @objc func refresh() {
-        // TODO: move to networking
         self.navigationItem.title = "Getting data..."
-        api.requestFeed(success: { feed in
-            self.navigationItem.title = "Lenta.ru feed"
-            self.gotResults(feed.items)
-        }, failure: { error in
-            self.navigationItem.title = "Failed to get feed data"
-            self.didFailToUpdateResults()
-            NSLog("\(error.localizedDescription)")
-        })
+        viewModel.updateFeed()
     }
-    
+}
+
+extension FeedViewController: FeedVMDelegate {
     func didFailToUpdateResults() {
+        self.navigationItem.title = "Failed to get feed data"
         refreshControl?.endRefreshing()
     }
     
-    func gotResults(_ items: [Item]) {
-        self.items = items
+    func gotResults() {
+        self.navigationItem.title = "Lenta.ru feed"
         tableView.reloadData()
         refreshControl?.endRefreshing()
     }
 }
 
 // MARK: - UITableViewDataSource
-extension ViewController {
+extension FeedViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return viewModel.items.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.newsCell, for: indexPath) as! NewsCell
         
-        let item = items[indexPath.row]
+        let item = viewModel.items[indexPath.row]
         cell.configure(item)
         
         return cell
@@ -68,7 +76,7 @@ extension ViewController {
 }
 
 // MARK: - UITableViewDelegate
-extension ViewController {
+extension FeedViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         UIView.animate(withDuration: 0.25) {
             tableView.beginUpdates()
