@@ -8,14 +8,8 @@
 
 import Foundation
 
-struct Item {
-    var title: String = ""
-    var description: String = ""
-    var pubDate: Date = Date()
-}
-
 protocol RssParser {
-    func parse(data: Data) -> [Item]
+    func parse(name: String, data: Data) -> [Item]
 }
 
 class StandardRssParser: NSObject, RssParser, XMLParserDelegate {
@@ -27,6 +21,7 @@ class StandardRssParser: NSObject, RssParser, XMLParserDelegate {
     }
     
     struct State {
+        var name: String = ""
         var inItem: Bool = false
         var element: Elem = .none
         
@@ -51,9 +46,10 @@ class StandardRssParser: NSObject, RssParser, XMLParserDelegate {
         dateFormatter = RFC822DateFormatter()
     }
     
-    func parse(data: Data) -> [Item] {
+    func parse(name: String, data: Data) -> [Item] {
         internalParser = XMLParser(data: data)
         self.state = State()
+        state.name = name
         
         internalParser?.delegate = self
         internalParser?.parse()
@@ -85,6 +81,7 @@ class StandardRssParser: NSObject, RssParser, XMLParserDelegate {
         switch elementName {
         case ItemNames.item:
             state.inItem = false
+            state.curItem.feedName = state.name
             state.items.append(state.curItem)
         case ItemNames.description:
             state.curItem.description = state.curItem.description.trimmingCharacters(in: .whitespacesAndNewlines)

@@ -19,7 +19,7 @@ class StandardFeedAPI: FeedAPI {
     init(name: String, feedUrl: String, parser: RssParser) {
         self.name = name
         self.feedUrlString = feedUrl
-        self.apiQueue = DispatchQueue(label: "lenta-ru-feed-api")
+        self.apiQueue = DispatchQueue(label: "\(name)-feed-api")
         self.parser = parser
     }
     
@@ -30,7 +30,7 @@ class StandardFeedAPI: FeedAPI {
             .responseData(queue: self.apiQueue) { response in
                 switch response.result {
                 case .success(let data):
-                    let items = self.parser.parse(data: data)
+                    let items = self.parser.parse(name: self.name, data: data)
                     let apiResult = FeedResult(items: items)
                     DispatchQueue.main.async {
                         success(apiResult)

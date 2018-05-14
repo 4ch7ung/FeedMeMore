@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+struct Item {
+    var feedName: String = ""
+    var title: String = ""
+    var description: String = ""
+    var pubDate: Date = Date()
+}
