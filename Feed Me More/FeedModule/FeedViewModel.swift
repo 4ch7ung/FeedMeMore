@@ -32,7 +32,7 @@ class FeedViewModel: FeedVM {
                 self.delegate?.gotResults()
             }, failure: { error in
                 self.delegate?.didFailToUpdateResults()
-                NSLog("\(error.localizedDescription)")
+                Logger.error(error.localizedDescription)
             })
         }
     }
