@@ -9,6 +9,9 @@
 import UIKit
 
 class NewsCell: UITableViewCell {
+    private let margin: CGFloat = 8
+    private let spacing: CGFloat = 3
+    
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
@@ -51,22 +54,22 @@ class NewsCell: UITableViewCell {
     
     func configureConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
-            titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8)
+            titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: margin),
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: margin),
+            titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -margin)
             ])
         
         NSLayoutConstraint.activate([
-            dateLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 3),
-            dateLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
-            dateLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8)
+            dateLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: spacing),
+            dateLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: margin),
+            dateLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -margin)
             ])
         
         NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 3),
-            descriptionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
-            descriptionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
-            descriptionLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8)
+            descriptionLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: spacing),
+            descriptionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: margin),
+            descriptionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -margin),
+            descriptionLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -margin)
             ])
     }
     
