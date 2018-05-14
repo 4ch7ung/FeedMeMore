@@ -14,23 +14,31 @@ protocol FeedVMDelegate {
 }
 
 class FeedViewModel: FeedVM {
-    private let api: FeedAPI
+    private let apis: [FeedAPI]
     
     var delegate: FeedVMDelegate?
     var items: [Item]
     
-    init(api: FeedAPI) {
+    init(apis: [FeedAPI]) {
         self.items = []
-        self.api = api
+        self.apis = apis
     }
     
     func updateFeed() {
-        api.requestFeed(success: { feed in
-            self.items = feed.items
-            self.delegate?.gotResults()
-        }, failure: { error in
-            self.delegate?.didFailToUpdateResults()
-            NSLog("\(error.localizedDescription)")
-        })
+        self.items = []
+        for api in apis {
+            api.requestFeed(success: { feed in
+                self.mergeItems(feed.items)
+                self.delegate?.gotResults()
+            }, failure: { error in
+                self.delegate?.didFailToUpdateResults()
+                NSLog("\(error.localizedDescription)")
+            })
+        }
+    }
+    
+    private func mergeItems(_ newItems: [Item]) {
+        items.append(contentsOf: newItems)
+        items.sort(by: { $0.pubDate > $1.pubDate })
     }
 }

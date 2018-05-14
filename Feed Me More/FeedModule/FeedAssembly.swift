@@ -14,8 +14,9 @@ protocol ModuleAssembly {
 
 class FeedAssembly: ModuleAssembly {
     func assembleModule() -> UIViewController {
-        let api = GazetaRuFeedAPIFactory().createAPI()
-        let vm = FeedViewModel(api: api)
+        let lentaApi = LentaRuFeedAPIFactory().createAPI()
+        let gazetaApi = GazetaRuFeedAPIFactory().createAPI()
+        let vm = FeedViewModel(apis: [lentaApi, gazetaApi])
         let viewController = FeedViewController(viewModel: vm)
         vm.delegate = viewController
         return viewController
