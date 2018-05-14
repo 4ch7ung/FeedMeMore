@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// News item representing single new
 struct Item {
     var feedName: String = ""
     var title: String = ""
