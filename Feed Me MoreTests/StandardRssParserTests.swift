@@ -43,7 +43,7 @@ class StandardRssParserTests: XCTestCase {
     
     func testParse() {
         let parser = StandardRssParser()
-        let items = parser.parse(data: _feed)
+        let items = parser.parse(name: "Test", data: _feed)
         AssertEquality(items.count, 3)
         
         let dateFormatter = RFC822DateFormatter()
