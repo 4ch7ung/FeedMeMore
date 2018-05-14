@@ -160,11 +160,11 @@
 				FA9B366720A7437400D7C053 /* AppDelegate.swift */,
 				FA103DFB20A90F5500C71EA0 /* FeedModule */,
 				FA103DED20A8F18400C71EA0 /* FeedAPI */,
+				FA103DFA20A90F4500C71EA0 /* Parser */,
 				FA9B366B20A7437400D7C053 /* Main.storyboard */,
 				FA9B366E20A7437700D7C053 /* Assets.xcassets */,
 				FA9B367020A7437700D7C053 /* LaunchScreen.storyboard */,
 				FA9B367320A7437700D7C053 /* Info.plist */,
-				FA103DFA20A90F4500C71EA0 /* Parser */,
 			);
 			path = "Feed Me More";
 			sourceTree = "<group>";
