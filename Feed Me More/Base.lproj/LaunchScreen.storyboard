@@ -18,33 +18,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feed Me More" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSN-hv-RcH">
-                                <rect key="frame" x="82" y="324" width="210" height="39"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created by 4ch7ung" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THD-VR-6kC">
                                 <rect key="frame" x="8" y="626" width="359" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pQs-qt-SON">
+                                <rect key="frame" x="82" y="273" width="210" height="141.5"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="gxK-Uv-gQL">
+                                        <rect key="frame" x="55" y="0.0" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="93l-yx-msN"/>
+                                            <constraint firstAttribute="height" constant="100" id="bJs-Q7-8Ym"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feed Me More" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSN-hv-RcH">
+                                        <rect key="frame" x="0.0" y="103" width="210" height="38.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="JSN-hv-RcH" firstAttribute="top" secondItem="gxK-Uv-gQL" secondAttribute="bottom" constant="3" id="1E5-Rl-hdi"/>
+                                    <constraint firstItem="gxK-Uv-gQL" firstAttribute="centerX" secondItem="pQs-qt-SON" secondAttribute="centerX" id="1nB-WZ-Oxc"/>
+                                    <constraint firstItem="gxK-Uv-gQL" firstAttribute="top" secondItem="pQs-qt-SON" secondAttribute="top" id="Pl1-vL-zTl"/>
+                                    <constraint firstItem="JSN-hv-RcH" firstAttribute="leading" secondItem="pQs-qt-SON" secondAttribute="leading" id="dWB-Dm-SQf"/>
+                                    <constraint firstAttribute="bottom" secondItem="JSN-hv-RcH" secondAttribute="bottom" id="m0N-AW-jnT"/>
+                                    <constraint firstAttribute="trailing" secondItem="JSN-hv-RcH" secondAttribute="trailing" id="z6j-B0-Dyy"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="pQs-qt-SON" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="8qX-MR-cOe"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="THD-VR-6kC" secondAttribute="bottom" constant="20" id="bpd-vt-deD"/>
-                            <constraint firstItem="JSN-hv-RcH" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="fGa-lu-W8d"/>
+                            <constraint firstItem="pQs-qt-SON" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="jUg-fl-VPg"/>
                             <constraint firstItem="THD-VR-6kC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="k14-OU-dPU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="THD-VR-6kC" secondAttribute="trailing" constant="8" id="t6q-mB-Ub8"/>
-                            <constraint firstItem="JSN-hv-RcH" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="yal-de-Nlg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Logo" width="100" height="100"/>
+    </resources>
 </document>
