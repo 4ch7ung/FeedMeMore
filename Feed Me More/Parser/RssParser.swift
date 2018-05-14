@@ -11,8 +11,7 @@ import Foundation
 struct Item {
     var title: String = ""
     var description: String = ""
-    // TODO: Use formatter to parse data
-    var pubDate: String = ""
+    var pubDate: Date = Date()
 }
 
 protocol RssParser {
@@ -44,10 +43,12 @@ class StandardRssParser: NSObject, RssParser, XMLParserDelegate {
     
     private var internalParser: XMLParser?
     private var state: State
+    private let dateFormatter: DateFormatter
     
     override init() {
         internalParser = nil
         state = State()
+        dateFormatter = RFC822DateFormatter()
     }
     
     func parse(data: Data) -> [Item] {
@@ -99,7 +100,7 @@ class StandardRssParser: NSObject, RssParser, XMLParserDelegate {
             case .title:
                 state.curItem.title += string
             case .pubDate:
-                state.curItem.pubDate += string
+                state.curItem.pubDate = dateFormatter.date(from: string) ?? Date.distantPast
             default:
                 // skip unrelated text
                 return

@@ -46,10 +46,13 @@ class StandardRssParserTests: XCTestCase {
         let items = parser.parse(data: _feed)
         AssertEquality(items.count, 3)
         
+        let dateFormatter = RFC822DateFormatter()
+        
         for i in 0..<items.count {
             AssertEquality(items[i].title, itemResults[i]["title"])
             AssertEquality(items[i].description, itemResults[i]["description"])
-            AssertEquality(items[i].pubDate, itemResults[i]["pubDate"])
+            let date = dateFormatter.date(from: itemResults[i]["pubDate"] ?? "")
+            AssertEquality(items[i].pubDate, date)
         }
     }
 }

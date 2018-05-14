@@ -14,6 +14,7 @@
 		FA103DF120A8F8F000C71EA0 /* FeedAPIFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA103DF020A8F8F000C71EA0 /* FeedAPIFactory.swift */; };
 		FA103DF320A8FFDE00C71EA0 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA103DF220A8FFDE00C71EA0 /* FeedViewModel.swift */; };
 		FA103DF520A900A700C71EA0 /* FeedAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA103DF420A900A700C71EA0 /* FeedAssembly.swift */; };
+		FA103DF920A90B7D00C71EA0 /* RFC822DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA103DF820A90B7D00C71EA0 /* RFC822DateFormatter.swift */; };
 		FA9B366820A7437400D7C053 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9B366720A7437400D7C053 /* AppDelegate.swift */; };
 		FA9B366A20A7437400D7C053 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9B366920A7437400D7C053 /* FeedViewController.swift */; };
 		FA9B366D20A7437400D7C053 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA9B366B20A7437400D7C053 /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 		FA103DF020A8F8F000C71EA0 /* FeedAPIFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAPIFactory.swift; sourceTree = "<group>"; };
 		FA103DF220A8FFDE00C71EA0 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		FA103DF420A900A700C71EA0 /* FeedAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAssembly.swift; sourceTree = "<group>"; };
+		FA103DF820A90B7D00C71EA0 /* RFC822DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFC822DateFormatter.swift; sourceTree = "<group>"; };
 		FA9B366420A7437400D7C053 /* Feed Me More.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Feed Me More.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9B366720A7437400D7C053 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA9B366920A7437400D7C053 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,26 @@
 			path = FeedAPI;
 			sourceTree = "<group>";
 		};
+		FA103DFA20A90F4500C71EA0 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				FA9B368720A7445100D7C053 /* RssParser.swift */,
+				FA103DF820A90B7D00C71EA0 /* RFC822DateFormatter.swift */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		FA103DFB20A90F5500C71EA0 /* FeedModule */ = {
+			isa = PBXGroup;
+			children = (
+				FA103DF420A900A700C71EA0 /* FeedAssembly.swift */,
+				FA9B368920A7448B00D7C053 /* NewsCell.swift */,
+				FA9B366920A7437400D7C053 /* FeedViewController.swift */,
+				FA103DF220A8FFDE00C71EA0 /* FeedViewModel.swift */,
+			);
+			path = FeedModule;
+			sourceTree = "<group>";
+		};
 		FA58B3946732A2CC01C1AC81 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,16 +158,13 @@
 			isa = PBXGroup;
 			children = (
 				FA9B366720A7437400D7C053 /* AppDelegate.swift */,
-				FA103DF420A900A700C71EA0 /* FeedAssembly.swift */,
-				FA9B366920A7437400D7C053 /* FeedViewController.swift */,
-				FA103DF220A8FFDE00C71EA0 /* FeedViewModel.swift */,
+				FA103DFB20A90F5500C71EA0 /* FeedModule */,
 				FA103DED20A8F18400C71EA0 /* FeedAPI */,
-				FA9B368720A7445100D7C053 /* RssParser.swift */,
-				FA9B368920A7448B00D7C053 /* NewsCell.swift */,
 				FA9B366B20A7437400D7C053 /* Main.storyboard */,
 				FA9B366E20A7437700D7C053 /* Assets.xcassets */,
 				FA9B367020A7437700D7C053 /* LaunchScreen.storyboard */,
 				FA9B367320A7437700D7C053 /* Info.plist */,
+				FA103DFA20A90F4500C71EA0 /* Parser */,
 			);
 			path = "Feed Me More";
 			sourceTree = "<group>";
@@ -308,6 +327,7 @@
 				FA9B366820A7437400D7C053 /* AppDelegate.swift in Sources */,
 				FA9B368A20A7448B00D7C053 /* NewsCell.swift in Sources */,
 				FA9B368820A7445100D7C053 /* RssParser.swift in Sources */,
+				FA103DF920A90B7D00C71EA0 /* RFC822DateFormatter.swift in Sources */,
 				FA103DF120A8F8F000C71EA0 /* FeedAPIFactory.swift in Sources */,
 				FA103DF520A900A700C71EA0 /* FeedAssembly.swift in Sources */,
 				FA103DF320A8FFDE00C71EA0 /* FeedViewModel.swift in Sources */,

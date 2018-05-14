@@ -12,6 +12,8 @@ class NewsCell: UITableViewCell {
     private let margin: CGFloat = 8
     private let spacing: CGFloat = 3
     
+    private let dateFormatter: DateFormatter
+    
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
@@ -24,6 +26,10 @@ class NewsCell: UITableViewCell {
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        self.dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.titleLabel = createNewLabel()
         titleLabel.numberOfLines = 0
@@ -45,7 +51,7 @@ class NewsCell: UITableViewCell {
     func configure(_ item: Item) {
         titleLabel.text = item.title
         descriptionLabel.text = item.description
-        dateLabel.text = item.pubDate
+        dateLabel.text = dateFormatter.string(from: item.pubDate)
     }
     
     required init?(coder aDecoder: NSCoder) {
